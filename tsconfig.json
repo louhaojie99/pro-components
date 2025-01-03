@@ -1,11 +1,18 @@
 {
   "compilerOptions": {
+    // 启用所有严格类型检查选项
     "strict": true,
+    // 生成相应的.d.ts声明文件
     "declaration": true,
+    // 跳过对所有声明文件 (*.d.ts) 的类型检查，提高编译速度
     "skipLibCheck": true,
+    // 启用与ES模块的互操作性，允许默认导出和命名导出的相互转换
     "esModuleInterop": true,
+    // 指定JSX代码的生成模式，这里设置为React的JSX工厂函数
     "jsx": "react",
+    // 设置基础目录，用于解析非相对模块名称
     "baseUrl": "./",
+    // 配置模块名到基于baseUrl的路径映射
     "paths": {
       "@@/*": [".dumi/tmp/*"],
       "@louhaojie99/pro-components": ["src"],
