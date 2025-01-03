@@ -5,15 +5,33 @@
 
 基于 Ant Design 打造的高级组件库。
 
-## Development
+## 启动项目
 
 ```bash
-# install dependencies
 $ pnpm install
 
-# develop library by docs demo
-$ pnpm start
+$ pnpm dev
+```
 
+## 手动部署
+
+编译生成 dist 目录
+
+```bash
+$ pnpm run build
+
+$ pnpm run docs:build
+```
+
+一键发布
+
+```bash
+$ pnpm run deploy
+```
+
+## 其他
+
+```bash
 # build library source code
 $ pnpm run build
 
@@ -28,22 +46,6 @@ $ pnpm run docs:preview
 
 # check your project for potential problems
 $ pnpm run doctor
-```
-
-## 手动部署
-
-编译生成 dist 目录
-
-```bash
-npm run build
-
-npm run docs:build
-```
-
-一键发布
-
-```bash
-npm run deploy
 ```
 
 ## LICENSE
