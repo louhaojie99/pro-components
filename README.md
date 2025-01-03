@@ -30,6 +30,22 @@ $ pnpm run docs:preview
 $ pnpm run doctor
 ```
 
+## 手动部署
+
+编译生成 dist 目录
+
+```bash
+npm run build
+
+npm run docs:build
+```
+
+一键发布
+
+```bash
+npm run deploy
+```
+
 ## LICENSE
 
 MIT
