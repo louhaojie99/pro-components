@@ -4,7 +4,7 @@ hero:
   description: 基于 Ant Design 打造的高级组件。
   actions:
     - text: 开始使用
-      link: /components/foo
+      link: /components/async-button
     - text: GitHub
       link: https://github.com/louhaojie99/pro-components
 features:

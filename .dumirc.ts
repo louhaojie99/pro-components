@@ -15,6 +15,7 @@ export default defineConfig({
     socialLinks: {
       github: 'https://github.com/louhaojie99/pro-components',
     },
+    nav: [{ title: '组件', link: '/components/async-button' }],
   },
   // 站点图标
   favicons: [
