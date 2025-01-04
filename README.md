@@ -5,6 +5,14 @@
 
 基于 Ant Design 打造的高级组件库。
 
+## 安装使用
+
+准备了一份详细的[教程文档](https://louhaojie99.github.io/pro-components)
+
+```bash
+$ pnpm install -S @louhaojie99/pro-components
+```
+
 ## 启动项目
 
 ```bash
@@ -27,6 +35,15 @@ $ pnpm run docs:build
 
 ```bash
 $ pnpm run deploy
+```
+
+## 更新 npm 包
+
+```bash
+$ pnpm run login
+
+$ pnpm run publish
+
 ```
 
 ## 其他
