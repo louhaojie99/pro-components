@@ -8,33 +8,7 @@ AsyncButton 是一个专门设计用于处理异步操作的按钮组件。当�
 
 ## 代码演示
 
-```tsx
-import React from 'react';
-import { AsyncButton } from '@louhaojie99/pro-components';
-import type { AsyncButtonProps } from '@louhaojie99/pro-components';
-
-function sleep(time: number) {
-  return new Promise((resolve) => {
-    setTimeout(resolve, time);
-  });
-}
-
-const App: React.FC = () => {
-  const handleClick: AsyncButton['onClick'] = async () => {
-    await sleep(2000);
-  };
-
-  return (
-    <div>
-      <AsyncButton type="primary" onClick={handleClick}>
-        AsyncButton
-      </AsyncButton>
-    </div>
-  );
-};
-
-export default App;
-```
+<code src="./demos"></code>
 
 ## API
 
