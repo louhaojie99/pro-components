@@ -2,6 +2,16 @@
   "name": "@louhaojie99/pro-components",
   "version": "0.0.1",
   "description": "基于 Ant Design 打造的高级组件库。",
+  "keywords": [
+    "louhaojie99",
+    "antd",
+    "pro-components"
+  ],
+  "homepage": "https://louhaojie99.github.io/pro-components",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/louhaojie99/pro-components"
+  },
   "license": "MIT",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -45,6 +55,10 @@
       "prettier --parser=typescript --write"
     ]
   },
+  "dependencies": {
+    "antd": "^5.22.7",
+    "react-intl": "^7.1.0"
+  },
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
@@ -65,17 +79,15 @@
     "stylelint": "^14.9.1"
   },
   "peerDependencies": {
+    "antd": "^>=5.0.0",
     "react": ">=16.9.0",
-    "react-dom": ">=16.9.0"
+    "react-dom": ">=16.9.0",
+    "react-intl": "^>=7.0.0"
   },
   "publishConfig": {
     "access": "public"
   },
   "authors": [
     "15896727763@163.com"
-  ],
-  "dependencies": {
-    "antd": "^5.22.7",
-    "react-intl": "^7.1.0"
-  }
+  ]
 }
