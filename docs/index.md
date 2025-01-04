@@ -21,4 +21,4 @@ features:
 
 ## 反馈与共建
 
-道友如使用遇到问题，请访问 [GitHub](https://github.com/louhaojie99/rc-components) 仓库，可留言 Issues，笔者看到会及时处理。
+道友如使用遇到问题，请访问 [GitHub](https://github.com/louhaojie99/pro-components) 仓库，可留言 Issues，笔者看到会及时处理。
