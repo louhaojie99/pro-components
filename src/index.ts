@@ -5,3 +5,7 @@ export { default as OverlaySpin } from './OverlaySpin';
 export type { OverlaySpinProps } from './OverlaySpin';
 
 export { default as DestructibleContainer } from './DestructibleContainer';
+export type { default as DestructibleContainerProps } from './DestructibleContainer';
+
+export { default as IntlProvider, LanguageEnum } from './IntlProvider';
+export type { IntlProviderProps } from './IntlProvider';

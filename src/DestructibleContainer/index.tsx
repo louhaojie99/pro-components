@@ -4,7 +4,7 @@
  */
 import React, { useEffect, useState } from 'react';
 
-interface DestructibleContainerProps {
+export interface DestructibleContainerProps {
   /** 可见性 */
   visible?: boolean;
   /** 同visible */
