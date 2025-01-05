@@ -9,3 +9,6 @@ export type { DestructibleContainerProps } from './DestructibleContainer';
 
 export { default as IntlProvider, LanguageEnum } from './IntlProvider';
 export type { IntlProviderProps } from './IntlProvider';
+
+export { default as EditableTable } from './EditableTable';
+export type { EditableTableProps, EditableTableRef } from './EditableTable';
