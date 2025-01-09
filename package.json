@@ -81,10 +81,8 @@
     "stylelint": "^14.9.1"
   },
   "peerDependencies": {
-    "antd": "^>=5.0.0",
     "react": ">=16.9.0",
-    "react-dom": ">=16.9.0",
-    "react-intl": "^>=7.0.0"
+    "react-dom": ">=16.9.0"
   },
   "publishConfig": {
     "access": "public"
