@@ -31,6 +31,7 @@
     "lint:es": "eslint \"{src,test}/**/*.{js,jsx,ts,tsx}\"",
     "prepare": "husky install && dumi setup",
     "prepublishOnly": "father doctor && npm run build",
+    "push": "npm run build && npm run docs:build && npm run deploy",
     "start": "npm run dev"
   },
   "commitlint": {
