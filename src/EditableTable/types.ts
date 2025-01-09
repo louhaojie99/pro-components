@@ -32,3 +32,8 @@ export interface EditableTableOptions {
   /** 是否隐藏添加按钮 */
   hideAdd?: boolean;
 }
+
+/**
+ * 允许引用到组件实例的类型
+ */
+export type LegacyRef<T> = React.Ref<T>;

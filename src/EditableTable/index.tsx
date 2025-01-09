@@ -15,14 +15,15 @@ import type {
   BaseStandardProps,
   EditableTableOptions,
   FormValuesType,
+  LegacyRef,
   RowValueType,
 } from './types';
 
 const { Link } = Typography;
 
-export interface EditableTableRef<Values = any> {
-  form: FormInstance<Values>;
-}
+export type EditableTableRef<ValueType = any> = FormInstance<
+  FormValuesType<ValueType>
+>;
 
 export interface EditableTableProps<
   ValueType extends RowValueType = RowValueType,
@@ -32,7 +33,7 @@ export interface EditableTableProps<
       'className' | 'style' | 'bordered' | 'columns'
     > {
   /** 表单实例 */
-  formRef?: React.Ref<EditableTableRef>;
+  formRef?: LegacyRef<EditableTableRef>;
   /** 可编辑表格扩展的选项参数 */
   options?: EditableTableOptions;
 }
@@ -48,6 +49,7 @@ const EditableTable = <ValueType extends RowValueType = RowValueType>(
     formRef,
     options,
   } = props;
+
   const { onlyPreview = false, hideAdd = false } = options ?? {};
 
   const [form] = Form.useForm<FormValuesType<ValueType>>();
@@ -64,9 +66,7 @@ const EditableTable = <ValueType extends RowValueType = RowValueType>(
     form.setFieldsValue({ items: tableData ?? [] });
   }, [tableData]);
 
-  useImperativeHandle(formRef, () => ({
-    form,
-  }));
+  useImperativeHandle(formRef, () => form);
 
   const getTableColumns = useMemoizedFn(
     ({ remove }: Pick<FormListOperation, 'remove'>) =>

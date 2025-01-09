@@ -8,21 +8,21 @@ import React, { useRef, useState } from 'react';
 
 const { Title, Paragraph } = Typography;
 
-type StudentInfo = {
+type UserInfo = {
   name: string;
   age: number;
   gender: 'male' | 'female';
 };
 
 const App: React.FC = () => {
-  const formRef = useRef<EditableTableRef<StudentInfo[]>>(null);
+  const formRef = useRef<EditableTableRef<UserInfo>>(null);
 
-  const [dataSource, setDataSource] = useState<StudentInfo[]>([
+  const [dataSource, setDataSource] = useState<UserInfo[]>([
     { name: '小酷', age: 20, gender: 'male' },
     { name: '小樱', age: 18, gender: 'female' },
   ]);
 
-  const columns: EditableTableProps<StudentInfo>['columns'] = [
+  const columns: EditableTableProps<UserInfo>['columns'] = [
     {
       title: '姓名',
       dataIndex: 'name',
@@ -85,7 +85,7 @@ const App: React.FC = () => {
       <Space style={{ width: '100%' }} direction="vertical">
         <Title level={5}>学生列表</Title>
 
-        <EditableTable<StudentInfo>
+        <EditableTable<UserInfo>
           formRef={formRef}
           columns={columns}
           value={dataSource}
@@ -104,7 +104,7 @@ const App: React.FC = () => {
       <Button
         type="primary"
         onClick={async () => {
-          await formRef.current?.form?.validateFields();
+          await formRef.current?.validateFields();
           console.log('提交的数据: ', dataSource);
         }}
       >
