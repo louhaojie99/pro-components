@@ -17,7 +17,7 @@ export interface DestructibleContainerProps {
   afterClose?: (...args: any[]) => void;
 }
 
-const DestructibleContainer =
+export const DestructibleContainer =
   <T extends DestructibleContainerProps>(Container: React.ComponentType<T>) =>
   (props: T) => {
     const {
@@ -70,5 +70,3 @@ const DestructibleContainer =
       <></>
     );
   };
-
-export default DestructibleContainer;

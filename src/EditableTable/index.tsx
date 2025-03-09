@@ -38,7 +38,7 @@ export interface EditableTableProps<
   options?: EditableTableOptions;
 }
 
-const EditableTable = <ValueType extends RowValueType = RowValueType>(
+export const EditableTable = <ValueType extends RowValueType = RowValueType>(
   props: EditableTableProps<ValueType>,
 ) => {
   const {
@@ -137,5 +137,3 @@ const EditableTable = <ValueType extends RowValueType = RowValueType>(
     </Form>
   );
 };
-
-export default EditableTable;

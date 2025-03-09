@@ -11,7 +11,7 @@ export interface AsyncButtonProps extends ButtonProps {
   onClick?: (...args: ClickArgs) => Promise<any> | void;
 }
 
-const AsyncButton = React.memo<AsyncButtonProps>((props) => {
+export const AsyncButton = React.memo<AsyncButtonProps>((props) => {
   const { onClick, ...restProps } = props;
   const [loading, setLoading] = useState<boolean | undefined>(undefined);
 
@@ -32,5 +32,3 @@ const AsyncButton = React.memo<AsyncButtonProps>((props) => {
 
   return <Button loading={loading} onClick={handleClick} {...restProps} />;
 });
-
-export default AsyncButton;

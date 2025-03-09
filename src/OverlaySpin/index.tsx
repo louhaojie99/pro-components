@@ -16,7 +16,7 @@ export interface OverlaySpinProps extends Omit<SpinProps, 'children'> {
 
 const prefixCls = 'overlay-spin';
 
-const OverlaySpin: React.FC<OverlaySpinProps> = (props) => {
+export const OverlaySpin: React.FC<OverlaySpinProps> = (props) => {
   const { spinning, background = '#fff', tip, ...restProps } = props;
 
   if (!spinning) {
@@ -36,5 +36,3 @@ const OverlaySpin: React.FC<OverlaySpinProps> = (props) => {
     </div>
   );
 };
-
-export default OverlaySpin;

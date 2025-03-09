@@ -25,6 +25,4 @@ export const IntlProvider = React.memo<IntlProviderProps>((props) => {
     </RcIntlProvider>
   );
 });
-
-export default IntlProvider;
 export { LanguageEnum };
