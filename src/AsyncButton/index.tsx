@@ -8,29 +8,29 @@ import React, { useState } from 'react';
 type ClickArgs = Parameters<Required<ButtonProps>['onClick']>;
 
 export interface AsyncButtonProps extends ButtonProps {
-  onClick?: (
-    ...args: ClickArgs
-  ) => any | ((...args: ClickArgs) => Promise<any>);
+  onClick?: (...args: ClickArgs) => Promise<any> | void;
 }
 
 const AsyncButton = React.memo<AsyncButtonProps>((props) => {
-  const { onClick, ...restButtonProps } = props;
+  const { onClick, ...restProps } = props;
   const [loading, setLoading] = useState<boolean | undefined>(undefined);
 
   const handleClick: ButtonProps['onClick'] = async (e) => {
-    if (!onClick) return;
+    if (!onClick || typeof onClick !== 'function') return;
 
-    try {
-      setLoading(true);
-      await onClick?.(e);
-    } finally {
-      setLoading(false);
+    const clickResult = onClick(e);
+
+    if (clickResult instanceof Promise) {
+      try {
+        setLoading(true);
+        await clickResult;
+      } finally {
+        setLoading(false);
+      }
     }
   };
 
-  return (
-    <Button loading={loading} onClick={handleClick} {...restButtonProps} />
-  );
+  return <Button loading={loading} onClick={handleClick} {...restProps} />;
 });
 
 export default AsyncButton;
