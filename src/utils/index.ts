@@ -1,25 +1,21 @@
 /**
- * 解析 json 字符串
+ * 安全解析 json 字符串
  * @param str 字符串
+ * @paras defaultValue 默认值
  * @returns
  */
-export const parseJSON = <
-  ValueType extends Record<string, any> | Array<Record<string, any>> = Record<
-    string,
-    any
-  >,
+export const parseJson = <
+  ValueType extends Record<string, any> = Record<string, any>,
 >(
   str: string | undefined | null,
-  defaultValue: Partial<ValueType> = {},
+  defaultValue: ValueType = {} as ValueType,
 ): ValueType => {
-  const isString = (val: any) => typeof val === 'string';
+  if (typeof str !== 'string') return defaultValue;
 
   try {
-    if (!isString(str)) return defaultValue as ValueType;
-    const parsedValue = JSON.parse(str ?? '') as ValueType;
-    return parsedValue;
+    return JSON.parse(str) as ValueType;
   } catch (error) {
-    console.error('Error parsing JSON:', error);
+    console.error('parse json error:', error);
     return defaultValue as ValueType;
   }
 };
