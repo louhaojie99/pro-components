@@ -3,45 +3,57 @@ import React, { useState } from 'react';
 
 const selectOptions: TabsSelectProps['options'] = [
   {
-    tabKey: 'tab1',
-    tabLabel: '男生',
+    tabKey: 'fanren',
+    tabLabel: '凡人修仙传',
     tabOptions: [
       {
-        label: '小酷',
+        label: '韩立（韩跑跑）',
         value: '1',
         item: {
           id: '1',
-          description: '这里可以放置选中后的跟更多信息...',
+          description: '主角，灵根普通但心智坚韧，擅长炼丹、阵法，人称"韩老魔"',
+          cultivation: '大乘期',
+          specialSkills: ['青元剑诀', '玄天斩灵剑', '时间法则'],
+          nickname: '韩跑跑',
         },
       },
       {
-        label: '小张',
+        label: '南宫婉',
         value: '2',
         item: {
           id: '2',
-          description: '这里可以放置选中后的跟更多信息...',
+          description: '韩立道侣，掩月宗天才修士，冰灵根',
+          cultivation: '元婴期',
+          specialSkills: ['冰系神通', '双修功法'],
+          nickname: '南宫仙子',
         },
       },
     ],
   },
   {
-    tabKey: 'tab2',
-    tabLabel: '女生',
+    tabKey: 'xianni',
+    tabLabel: '仙逆',
     tabOptions: [
       {
-        label: '小樱',
-        value: '3',
-        item: {
-          id: '3',
-          description: '这里可以放置选中后的跟更多信息...',
-        },
-      },
-      {
-        label: '小刘',
+        label: '王林',
         value: '4',
         item: {
           id: '4',
-          description: '这里可以放置选中后的跟更多信息...',
+          description: '主角，因家族被灭踏上修仙路，性格冷酷果断',
+          cultivation: '踏天境',
+          specialSkills: ['杀戮仙诀', '古神之体', '因果之道'],
+          nickname: '王老魔',
+        },
+      },
+      {
+        label: '李慕婉',
+        value: '5',
+        item: {
+          id: '5',
+          description: '王林挚爱，温柔善良，因特殊体质被各方觊觎',
+          cultivation: '化神期',
+          specialSkills: ['炼丹术'],
+          nickname: '婉儿',
         },
       },
     ],
@@ -50,11 +62,11 @@ const selectOptions: TabsSelectProps['options'] = [
 
 const App: React.FC = () => {
   const [value, setValue] = useState<TabsSelectProps['value']>({
-    activeTab: 'tab1',
+    activeTab: 'fanren',
     selectValue: { value: '1' },
   });
   const [values, setValues] = useState<TabsSelectProps['value']>({
-    activeTab: 'tab1',
+    activeTab: 'fanren',
     selectValue: [{ value: '1' }],
   });
 

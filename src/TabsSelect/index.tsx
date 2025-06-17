@@ -1,11 +1,9 @@
 import { useControllableValue } from 'ahooks';
 import type { SelectProps, TabsProps } from 'antd';
 import { Empty, Select, Spin, Tabs } from 'antd';
-import { keyBy } from 'lodash';
+import { keyBy, omit } from 'lodash';
 import React, { useMemo } from 'react';
 import type { OptionType, SelectValue, TabOptions } from './types';
-
-export type * from './types';
 
 export interface TabsSelectProps<
   ValueType extends SelectValue | undefined = SelectValue,
@@ -42,8 +40,10 @@ export const TabsSelect = <
     options: tabOptions,
     defaultValue: propsDefaultValue,
     tabsProps,
-    ...restProps
+    ..._restProps
   } = props;
+
+  const restProps = omit(_restProps, ['value', 'onChange']);
 
   const defaultActionTab = tabOptions?.[0]?.tabKey ?? '';
 
@@ -85,7 +85,6 @@ export const TabsSelect = <
 
   return (
     <Select
-      {...restProps}
       allowClear
       loading={loading}
       labelInValue
@@ -114,6 +113,7 @@ export const TabsSelect = <
       notFoundContent={<Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />}
       placeholder="请选择"
       onChange={handleSelectChang}
+      {...restProps}
     />
   );
 };
