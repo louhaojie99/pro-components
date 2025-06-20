@@ -5,10 +5,12 @@ import React, { useEffect } from 'react';
 
 const UserDetailsModal: React.FC<ModalProps> = (props) => {
   useEffect(() => {
-    console.log('props: ', props);
-  }, []);
+    console.log('mount: ', props);
 
-  console.log('render: ', props);
+    return () => {
+      console.log('unmount: ', props);
+    };
+  }, []);
 
   return (
     <Modal title="用户详情" {...props}>
