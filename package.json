@@ -60,11 +60,13 @@
     "@ant-design/icons": "^5.5.2",
     "ahooks": "^3.8.4",
     "antd": "^5.22.7",
+    "lodash": "^4.17.21",
     "react-intl": "^7.1.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
+    "@types/lodash": "^4.17.18",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "@umijs/lint": "^4.0.0",
