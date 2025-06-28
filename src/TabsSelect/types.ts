@@ -15,3 +15,12 @@ export type SelectValue = {
 };
 
 export type TabOptions = SelectProps<RawValue, OptionType>['options'];
+
+export type Option = {
+  /** 选项卡 Key */
+  tabKey: string;
+  /** 选项卡头显示文字 */
+  tabLabel: string;
+  /** 数据化配置选项内容 */
+  tabOptions: TabOptions;
+};

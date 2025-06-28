@@ -7,7 +7,7 @@ const selectOptions: TabsSelectProps['options'] = [
     tabLabel: '凡人修仙传',
     tabOptions: [
       {
-        label: '韩立（韩跑跑）',
+        label: '韩立',
         value: '1',
         item: {
           id: '1',

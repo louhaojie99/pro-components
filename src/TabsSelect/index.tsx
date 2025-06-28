@@ -3,31 +3,21 @@ import type { SelectProps, TabsProps } from 'antd';
 import { Empty, Select, Spin, Tabs } from 'antd';
 import { keyBy, omit } from 'lodash';
 import React, { useMemo } from 'react';
-import type { OptionType, SelectValue, TabOptions } from './types';
+import type { Option, OptionType, SelectValue } from './types';
 
 export interface TabsSelectProps<
   ValueType extends SelectValue | undefined = SelectValue,
-> extends Omit<
-    SelectProps,
-    'defaultValue' | 'value' | 'onChange' | 'onSelect' | 'options'
-  > {
+> extends Omit<SelectProps, 'defaultValue' | 'value' | 'onChange' | 'options'> {
   /** 默认值 */
   defaultValue?: ValueType;
   /** 受控的值 */
   value?: ValueType;
   /** 状态变化的回调 */
   onChange?: (val: ValueType) => void;
+  /** 选项卡形式的选项数据 */
+  options?: Option[];
   /** 选项卡配置 */
   tabsProps?: Omit<TabsProps, 'items' | 'activeKey' | 'onChange'>;
-  /** 选项卡形式的选项数据 */
-  options?: {
-    /** 选项卡 Key */
-    tabKey: string;
-    /** 选项卡头显示文字 */
-    tabLabel: string;
-    /** 数据化配置选项内容 */
-    tabOptions: TabOptions;
-  }[];
 }
 
 export const TabsSelect = <
@@ -40,10 +30,8 @@ export const TabsSelect = <
     options: tabOptions,
     defaultValue: propsDefaultValue,
     tabsProps,
-    ..._restProps
+    ...restProps
   } = props;
-
-  const restProps = omit(_restProps, ['value', 'onChange']);
 
   const defaultActionTab = tabOptions?.[0]?.tabKey ?? '';
 
@@ -52,9 +40,6 @@ export const TabsSelect = <
       activeTab: defaultActionTab,
       selectValue: undefined,
     },
-    defaultValuePropName: 'defaultValue',
-    valuePropName: 'value',
-    trigger: 'onChange',
   });
 
   const { activeTab = defaultActionTab, selectValue } = state ?? {};
@@ -85,11 +70,7 @@ export const TabsSelect = <
 
   return (
     <Select
-      allowClear
       loading={loading}
-      labelInValue
-      value={selectValue}
-      options={selectOptions}
       dropdownRender={(menu) => {
         const tabContent = <Spin spinning={loading}>{menu}</Spin>;
         return tabOptions ? (
@@ -111,9 +92,12 @@ export const TabsSelect = <
         );
       }}
       notFoundContent={<Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />}
-      placeholder="请选择"
+      labelInValue
+      defaultActiveFirstOption={false}
+      value={selectValue}
+      options={selectOptions}
       onChange={handleSelectChang}
-      {...restProps}
+      {...omit(restProps, ['value', 'onChange'])}
     />
   );
 };
