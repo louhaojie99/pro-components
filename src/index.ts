@@ -1,5 +1,6 @@
 // Components
 export * from './AsyncButton';
+export * from './CollapseSelect';
 export * from './DestructibleContainer';
 export * from './EditableTable';
 export * from './IntlProvider';
