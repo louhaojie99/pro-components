@@ -3,59 +3,73 @@
  */
 import { PlusOutlined } from '@ant-design/icons';
 import { useControllableValue, useMemoizedFn } from 'ahooks';
-import type {
-  FormInstance,
-  FormListFieldData,
-  FormListOperation,
-  TableProps,
-} from 'antd';
+import type { FormInstance, FormListOperation } from 'antd';
 import { Button, Form, Table, Typography } from 'antd';
-import React, { useEffect, useImperativeHandle } from 'react';
+import { omit } from 'lodash';
+import React, { useEffect, useImperativeHandle, useMemo } from 'react';
+import type { AnyObject } from '../typings';
+import { DEFAULT_ARRAY_VALUE } from './constants';
 import type {
   BaseStandardProps,
   EditableTableOptions,
   FormValuesType,
   LegacyRef,
-  RowValueType,
+  TableProps,
 } from './types';
 
 const { Link } = Typography;
 
-export type EditableTableRef<ValueType = any> = FormInstance<
-  FormValuesType<ValueType>
+export type EditableTableRef<RecordType = AnyObject> = FormInstance<
+  FormValuesType<RecordType>
 >;
 
-export interface EditableTableProps<
-  ValueType extends RowValueType = RowValueType,
-> extends BaseStandardProps<ValueType[]>,
-    Pick<
-      TableProps<ValueType & Pick<FormListFieldData, 'key'>>,
-      'className' | 'style' | 'bordered' | 'columns'
-    > {
+export interface EditableTableProps<RecordType extends AnyObject = AnyObject>
+  extends BaseStandardProps<RecordType[]> {
+  className?: string | undefined;
+  style?: React.CSSProperties | undefined;
+  bordered?: boolean;
+  columns?: TableProps<RecordType>['columns'];
   /** 表单实例 */
   formRef?: LegacyRef<EditableTableRef>;
   /** 可编辑表格扩展的选项参数 */
   options?: EditableTableOptions;
+  tableProps?: Omit<
+    TableProps<RecordType>,
+    'rowKey' | 'bordered' | 'dataSource' | 'columns' | 'footer'
+  >;
 }
 
-export const EditableTable = <ValueType extends RowValueType = RowValueType>(
-  props: EditableTableProps<ValueType>,
+export const EditableTable = <RecordType extends AnyObject = AnyObject>(
+  props: EditableTableProps<RecordType>,
 ) => {
   const {
     className,
     style,
     bordered = false,
-    columns,
+    columns: propsColumns = DEFAULT_ARRAY_VALUE,
     formRef,
     options,
+    tableProps: propsTableProps,
   } = props;
 
-  const { onlyPreview = false, hideAdd = false } = options ?? {};
+  const { onlyPreview = false, hideAdd = false, addButtonText } = options ?? {};
 
-  const [form] = Form.useForm<FormValuesType<ValueType>>();
+  const tableProps = useMemo(
+    () =>
+      omit(propsTableProps, [
+        'rowKey',
+        'bordered',
+        'dataSource',
+        'columns',
+        'footer',
+      ]),
+    [propsTableProps],
+  );
 
-  const [tableData, setTableData] = useControllableValue<
-    ValueType[] | undefined
+  const [form] = Form.useForm<FormValuesType<RecordType>>();
+
+  const [innerTableData, setInnerTableData] = useControllableValue<
+    RecordType[] | undefined
   >(props, {
     defaultValuePropName: 'defaultValue',
     valuePropName: 'value',
@@ -63,15 +77,15 @@ export const EditableTable = <ValueType extends RowValueType = RowValueType>(
   });
 
   useEffect(() => {
-    form.setFieldsValue({ items: tableData ?? [] });
-  }, [tableData]);
+    form.setFieldsValue({ items: innerTableData ?? [] });
+  }, [innerTableData]);
 
   useImperativeHandle(formRef, () => form);
 
-  const getTableColumns = useMemoizedFn(
+  const genTableColumns = useMemoizedFn(
     ({ remove }: Pick<FormListOperation, 'remove'>) =>
       [
-        ...(columns ?? []),
+        ...propsColumns,
         {
           title: '操作',
           dataIndex: 'action',
@@ -82,37 +96,36 @@ export const EditableTable = <ValueType extends RowValueType = RowValueType>(
             </Link>
           ),
         },
-      ] as TableProps<ValueType>['columns'],
+      ] as TableProps['columns'],
   );
 
-  const handleFormTableChange = (changedTableData: ValueType[]) => {
-    setTableData(changedTableData);
-  };
+  const handleChange = useMemoizedFn((changedTableData: RecordType[]) => {
+    setInnerTableData(changedTableData);
+  });
 
   return (
-    <Form<FormValuesType<ValueType>>
+    <Form<FormValuesType<RecordType>>
       className={className}
       form={form}
       style={{ ...style }}
       autoComplete="off"
       component={false}
       disabled={!!onlyPreview}
-      initialValues={{ items: tableData }}
+      initialValues={{ items: innerTableData }}
       onValuesChange={(_, { items }) => {
-        handleFormTableChange(items);
+        handleChange(items);
       }}
     >
       <Form.List name="items">
         {(fields, { add, remove }) => (
-          <Table<ValueType>
-            // 这部分是内置的配置
+          <Table<RecordType>
             rowKey="key"
             bordered={bordered}
             dataSource={fields.map((field) => ({
               ...form.getFieldValue(['items', field.key]),
               key: field.name,
             }))}
-            columns={getTableColumns({ remove })}
+            columns={genTableColumns({ remove })}
             {...(!hideAdd && {
               footer: () => (
                 <Button
@@ -125,12 +138,13 @@ export const EditableTable = <ValueType extends RowValueType = RowValueType>(
                     add();
                   }}
                 >
-                  添加一行
+                  {addButtonText || '添加一行'}
                 </Button>
               ),
             })}
             pagination={false}
             scroll={{ x: 'max-content' }}
+            {...tableProps}
           />
         )}
       </Form.List>

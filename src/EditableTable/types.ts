@@ -1,7 +1,5 @@
-/**
- * 表格数据类型
- */
-export type RowValueType = Record<string, any>;
+import type { TableProps as AntdTableProps } from 'antd';
+import type { AnyObject } from '../typings';
 
 /**
  * 表格表单实例类型
@@ -31,9 +29,13 @@ export interface EditableTableOptions {
   onlyPreview?: boolean;
   /** 是否隐藏添加按钮 */
   hideAdd?: boolean;
+  /** 添加按钮文本 */
+  addButtonText?: string;
 }
 
 /**
  * 允许引用到组件实例的类型
  */
 export type LegacyRef<T> = React.Ref<T>;
+
+export type TableProps<RecordType = AnyObject> = AntdTableProps<RecordType>;
