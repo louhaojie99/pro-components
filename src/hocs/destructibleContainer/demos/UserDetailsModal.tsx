@@ -1,19 +1,18 @@
-import { DestructibleContainer } from '@louhaojie99/pro-components';
 import type { ModalProps } from 'antd';
 import { Modal } from 'antd';
 import React, { useEffect } from 'react';
 
 const UserDetailsModal: React.FC<ModalProps> = (props) => {
   useEffect(() => {
-    console.log('mount: ', props);
+    alert('mount');
 
     return () => {
-      console.log('unmount: ', props);
+      alert('unmount');
     };
   }, []);
 
   return (
-    <Modal title="用户详情" {...props}>
+    <Modal {...props}>
       <p>小酷</p>
       <p>小樱</p>
       <p>小美</p>
@@ -21,4 +20,4 @@ const UserDetailsModal: React.FC<ModalProps> = (props) => {
   );
 };
 
-export default DestructibleContainer(UserDetailsModal);
+export default UserDetailsModal;

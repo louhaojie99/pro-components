@@ -17,7 +17,7 @@ export interface DestructibleContainerProps {
   afterClose?: (...args: any[]) => void;
 }
 
-export const DestructibleContainer =
+export const destructibleContainer =
   <T extends DestructibleContainerProps>(Container: React.ComponentType<T>) =>
   (props: T) => {
     const {
