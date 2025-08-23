@@ -21,25 +21,21 @@ $ pnpm install
 $ pnpm dev
 ```
 
-## 手动部署
+## 更新文档
 
 编译生成 dist 目录
 
 ```bash
-$ pnpm run build
-
 $ pnpm run docs:build
-```
 
-一键发布
-
-```bash
 $ pnpm run deploy
 ```
 
 ## 更新 npm 包
 
 ```bash
+$ pnpm run build
+
 $ pnpm run login
 
 $ pnpm run publish
