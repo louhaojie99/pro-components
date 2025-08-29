@@ -7,7 +7,7 @@ export * from './OverlaySpin';
 export * from './TabsSelect';
 
 // Utils
-export * as utils from './utils';
+export * as Utils from './utils';
 
-// hoc
-export * as hocs from './hocs';
+// HOCS
+export * as HOCS from './hocs';
