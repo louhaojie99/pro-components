@@ -1,4 +1,4 @@
-import { IntlProvider, LanguageEnum } from '@louhaojie99/pro-components';
+import { IntlProvider, Language } from '@louhaojie99/pro-components';
 import { Radio } from 'antd';
 import React, { useState } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -15,7 +15,7 @@ const App: React.FC = () => {
 };
 
 const Root = () => {
-  const [local, setLocal] = useState(LanguageEnum.ZH_CN);
+  const [local, setLocal] = useState(Language.ZH_CN);
 
   return (
     <>
@@ -24,11 +24,11 @@ const Root = () => {
         options={[
           {
             label: '中文',
-            value: LanguageEnum.ZH_CN,
+            value: Language.ZH_CN,
           },
           {
             label: 'English',
-            value: LanguageEnum.EN_US,
+            value: Language.EN_US,
           },
         ]}
         onChange={(e) => {

@@ -1,7 +1,7 @@
 /**
  * 语言
  */
-export enum LanguageEnum {
+export enum Language {
   ZH_CN = 'zh-CN',
   EN_US = 'en-US',
 }

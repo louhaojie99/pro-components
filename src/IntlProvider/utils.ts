@@ -3,7 +3,7 @@ import zhCNAntd from 'antd/es/locale/zh_CN';
 import { createIntl, createIntlCache } from 'react-intl';
 import enUSMessage from '../locales/en-US';
 import zhCNMessage from '../locales/zh-CN';
-import { LanguageEnum } from './constants';
+import { Language } from './constants';
 
 /**
  * 获取当前语言的一些国际化配置项
@@ -15,11 +15,11 @@ export const getLocalItem = (locale: string) => {
     string,
     { message: Record<string, any>; antd: typeof zhCNAntd }
   > = {
-    [LanguageEnum.ZH_CN]: {
+    [Language.ZH_CN]: {
       message: zhCNMessage,
       antd: zhCNAntd,
     },
-    [LanguageEnum.EN_US]: {
+    [Language.EN_US]: {
       message: enUSMessage,
       antd: enUSAntd,
     },
@@ -35,7 +35,7 @@ const intlCache = createIntlCache();
  * @param locale 当前语言环境
  * @returns 获取到IntlShape，详情见 https://formatjs.io/docs/react-intl/api
  */
-export const getIntl = (locale: string = LanguageEnum.ZH_CN) =>
+export const getIntl = (locale: string = Language.ZH_CN) =>
   createIntl(
     {
       locale,

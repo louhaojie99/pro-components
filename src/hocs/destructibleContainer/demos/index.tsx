@@ -1,8 +1,9 @@
-import { hocs } from '@louhaojie99/pro-components';
+import { HOCS } from '@louhaojie99/pro-components';
 import { Button, Space } from 'antd';
 import React, { useState } from 'react';
 import BaseUserDetailsModal from './UserDetailsModal';
-const { destructibleContainer } = hocs;
+
+const { destructibleContainer } = HOCS;
 
 const UserDetailsModal = destructibleContainer(BaseUserDetailsModal);
 
