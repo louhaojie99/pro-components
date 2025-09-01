@@ -36,9 +36,9 @@ $ pnpm run deploy
 ```bash
 $ pnpm run build
 
-$ pnpm run login
+$ npm login
 
-$ pnpm run publish
+$ npm publish
 
 ```
 
