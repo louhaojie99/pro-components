@@ -1,5 +1,8 @@
+import { SearchOutlined } from '@ant-design/icons';
 import type { TableColumnType as BaseTableColumnType } from 'antd';
+import { Button, Input } from 'antd';
 import { get } from 'lodash';
+import React from 'react';
 
 type TableColumnType = BaseTableColumnType<any>;
 type DataIndex = TableColumnType['dataIndex'];
@@ -24,7 +27,45 @@ const commonFilter = (
 export const getColumnSearchProps = (
   dataIndex: DataIndex,
 ): TableColumnType => ({
-  dataIndex,
+  filterDropdown: ({
+    setSelectedKeys,
+    selectedKeys,
+    confirm,
+    clearFilters,
+  }) => (
+    <div style={{ padding: 8 }}>
+      <Input
+        placeholder="搜索"
+        value={selectedKeys[0]}
+        onChange={(e) =>
+          setSelectedKeys(e.target.value ? [e.target.value] : [])
+        }
+        onPressEnter={() => confirm()}
+        style={{ width: 188, marginBottom: 8, display: 'block' }}
+      />
+
+      <Button
+        size="small"
+        type="primary"
+        onClick={() => confirm()}
+        style={{ width: 90, marginRight: 8 }}
+      >
+        搜索
+      </Button>
+      <Button
+        size="small"
+        type="default"
+        onClick={() => clearFilters?.()}
+        style={{ width: 90 }}
+      >
+        重置
+      </Button>
+    </div>
+  ),
+  filterIcon: (filtered) => (
+    <SearchOutlined style={{ color: filtered ? '#2f54eb' : undefined }} />
+  ),
+  onFilter: (value, record) => commonFilter(value, record, dataIndex),
 });
 
 /**
@@ -54,5 +95,41 @@ export const getColumnFilterProps = (
 export const getColumnSortedProps = (dataIndex: DataIndex): TableColumnType => {
   return {
     sorter: (a, b) => get(a, dataIndex) - get(b, dataIndex),
+  };
+};
+
+/**
+ * 合并相同数据的行
+ * @param dataSource 数据源
+ * @param dataIndex 字段名
+ * @returns 合并相关的数据
+ */
+export const mergeSameValueRowCell = <
+  DataType extends Record<string, any> = any,
+>(
+  dataSource: DataType[],
+  dataIndex: string,
+) => {
+  const onCell = (record: any, rowIndex?: number) => {
+    const currentName = record[dataIndex];
+    const nextRowName = dataSource[rowIndex! + 1]?.[dataIndex];
+    const prevRowName = dataSource[rowIndex! - 1]?.[dataIndex];
+    const firstRowIndex = dataSource.findIndex(
+      (item) => item[dataIndex] === currentName,
+    );
+
+    if (currentName === nextRowName && firstRowIndex === rowIndex) {
+      const count = dataSource.filter(
+        (item) => item[dataIndex] === currentName,
+      ).length;
+      return { rowSpan: count };
+    }
+    if (currentName === prevRowName) return { rowSpan: 0 };
+
+    return {};
+  };
+
+  return {
+    onCell,
   };
 };
