@@ -1,10 +1,12 @@
 {
   "name": "@louhaojie99/pro-components",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "基于 Ant Design 打造的高级组件库。",
   "keywords": [
     "louhaojie99",
+    "react-components",
     "antd",
+    "ant-design",
     "pro-components"
   ],
   "homepage": "https://louhaojie99.github.io/pro-components",
