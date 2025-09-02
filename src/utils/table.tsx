@@ -1,7 +1,7 @@
 import { SearchOutlined } from '@ant-design/icons';
 import type { TableColumnType as BaseTableColumnType } from 'antd';
 import { Button, Input } from 'antd';
-import { get } from 'lodash';
+import { get, isString } from 'lodash';
 import React from 'react';
 
 type TableColumnType = BaseTableColumnType<any>;
@@ -92,9 +92,24 @@ export const getColumnFilterProps = (
  * 获取表格排序相关参数
  * @param dataIndex 列数据在数据项中对应的路径
  */
-export const getColumnSortedProps = (dataIndex: DataIndex): TableColumnType => {
+export const getColumnSorterProps = (dataIndex: DataIndex): TableColumnType => {
   return {
-    sorter: (a, b) => get(a, dataIndex) - get(b, dataIndex),
+    sorter: (a, b) => {
+      const valueA = get(a, dataIndex);
+      const valueB = get(b, dataIndex);
+      const numValueA = Number(valueA);
+      const numValueB = Number(valueB);
+
+      if (!Number.isNaN(numValueA) && !Number.isNaN(numValueB)) {
+        return numValueA - numValueB;
+      }
+
+      if (isString(valueA) && isString(valueB)) {
+        return valueA.localeCompare(valueB);
+      }
+
+      return 0;
+    },
   };
 };
 

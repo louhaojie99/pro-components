@@ -3,7 +3,7 @@ export { parseJson } from './json';
 export {
   getColumnFilterProps,
   getColumnSearchProps,
-  getColumnSortedProps,
+  getColumnSorterProps,
   mergeSameValueRowCell,
 } from './table';
 
