@@ -11,3 +11,5 @@ export {
   type SetState,
   type UseSetStateReturnValue,
 } from './useSetState';
+
+export { useUpdateEffect } from './useUpdateEffect';
