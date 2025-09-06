@@ -13,3 +13,5 @@ export {
 } from './useSetState';
 
 export { useUpdateEffect } from './useUpdateEffect';
+
+export { useTitle, type Options } from './useTitle';
