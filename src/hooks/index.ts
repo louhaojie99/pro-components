@@ -6,11 +6,8 @@ export { useEffectOnceWhen } from './useEffectOnceWhen';
 
 export { useWillUnmount } from './useWillUnmount';
 
-export {
-  useSetState,
-  type SetState,
-  type UseSetStateReturnValue,
-} from './useSetState';
+export { useSetState } from './useSetState';
+export type { SetState, UseSetStateReturnValue } from './useSetState';
 
 export { useUpdateEffect } from './useUpdateEffect';
 
