@@ -25,5 +25,5 @@ export const useUpdateEffect = (
     return () => {
       isDidMounted.current = false;
     };
-  }, [deps]);
+  }, deps);
 };
