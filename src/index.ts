@@ -20,8 +20,8 @@ export type { TabsSelectProps } from './TabsSelect';
 // Utils
 export * as Utils from './utils';
 
-// HOCS
+// HOCs
 export * as HOCS from './hocs';
 
-// Hooks
+// HOOKs
 export * as HOOKS from './hooks';
