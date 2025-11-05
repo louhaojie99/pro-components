@@ -17,6 +17,9 @@ export type { OverlaySpinProps } from './OverlaySpin';
 export { TabsSelect } from './TabsSelect';
 export type { TabsSelectProps } from './TabsSelect';
 
+export { ProcessDesigner } from './ProcessDesigner';
+export type { ProcessDesignerProps } from './ProcessDesigner';
+
 // Utils
 export * as Utils from './utils';
 

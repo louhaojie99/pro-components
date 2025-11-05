@@ -1,3 +1,13 @@
 {
-  "words": ["hocs", "ahooks", "dumi", "umijs", "dumirc", "favicons"]
+  "words": [
+    "hocs",
+    "ahooks",
+    "dumi",
+    "umijs",
+    "dumirc",
+    "favicons",
+    "@antv/x6",
+    "Snapline",
+    "Sider"
+  ]
 }
