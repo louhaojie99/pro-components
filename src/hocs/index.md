@@ -25,3 +25,14 @@ destructibleContainer 是一个高阶组件，能够在组件的 visible 或 ope
 代码演示
 
 <code src="./optionInValueSelect/demos/optionInValueSelectBasic.tsx"></code>
+
+
+## withSelectAll
+
+何时使用
+
+- 为 Select 组件添加全选功能
+
+代码演示
+
+<code src="./withSelectAll/demos/withSelectAllDemo.tsx"></code>
