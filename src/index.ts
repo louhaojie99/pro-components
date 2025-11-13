@@ -17,6 +17,9 @@ export type { OverlaySpinProps } from './OverlaySpin';
 export { TabsSelect } from './TabsSelect';
 export type { TabsSelectProps } from './TabsSelect';
 
+export { Portal } from './Portal';
+export type { PortalProps } from './Portal';
+
 // Utils
 export * as Utils from './utils';
 
