@@ -26,7 +26,6 @@ destructibleContainer 是一个高阶组件，能够在组件的 visible 或 ope
 
 <code src="./optionInValueSelect/demos/optionInValueSelectBasic.tsx"></code>
 
-
 ## withSelectAll
 
 何时使用
@@ -36,3 +35,9 @@ destructibleContainer 是一个高阶组件，能够在组件的 visible 或 ope
 代码演示
 
 <code src="./withSelectAll/demos/withSelectAllDemo.tsx"></code>
+
+## withProviders
+
+何时使用
+
+- 将多个高阶组件按顺序组合成一个高阶组件，简化多层嵌套的 HOC 调用。
