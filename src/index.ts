@@ -20,6 +20,9 @@ export type { TabsSelectProps } from './TabsSelect';
 export { Portal } from './Portal';
 export type { PortalProps } from './Portal';
 
+export { ErrorBoundary } from './ErrorBoundary';
+export type { ErrorBoundaryProps, ErrorBoundaryState } from './ErrorBoundary';
+
 // Utils
 export * as Utils from './utils';
 
