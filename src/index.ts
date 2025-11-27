@@ -23,6 +23,9 @@ export type { PortalProps } from './Portal';
 export { ErrorBoundary } from './ErrorBoundary';
 export type { ErrorBoundaryProps, ErrorBoundaryState } from './ErrorBoundary';
 
+export { SearchForm } from './SearchForm';
+export type { SearchFormItem, SearchFormProps } from './SearchForm';
+
 // Utils
 export * as Utils from './utils';
 
