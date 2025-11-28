@@ -1,7 +1,7 @@
 import { TabsSelect, type TabsSelectProps } from '@louhaojie99/pro-components';
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 
-const selectOptions: TabsSelectProps['options'] = [
+const baseOptions: TabsSelectProps['options'] = [
   {
     tabKey: 'fanren',
     tabLabel: '凡人修仙传',
@@ -61,35 +61,52 @@ const selectOptions: TabsSelectProps['options'] = [
 ];
 
 const App: React.FC = () => {
-  const [value, setValue] = useState<TabsSelectProps['value']>({
-    activeTab: 'fanren',
-    selectValue: { value: '1' },
-  });
-  const [values, setValues] = useState<TabsSelectProps['value']>({
-    activeTab: 'fanren',
-    selectValue: [{ value: '1' }],
+  // 单选状态
+  const [singleValue, setSingleValue] = useState<TabsSelectProps['value']>({
+    activeTab: 'all',
+    selectValue: undefined,
   });
 
-  console.log('value: ', value);
-  console.log('values: ', values);
+  // 多选状态
+  const [multiValue, setMultiValue] = useState<TabsSelectProps['value']>({
+    activeTab: 'all',
+    selectValue: [],
+  });
+
+  const options = useMemo(() => {
+    // 提取所有 Tab 下的 options 并扁平化
+    const allOptions = baseOptions.flatMap((tab) => tab.tabOptions || []);
+
+    return [
+      {
+        tabKey: 'all',
+        tabLabel: '全部',
+        tabOptions: allOptions,
+      },
+      ...baseOptions,
+    ];
+  }, [baseOptions]);
+
+  console.log('singleValue: ', singleValue);
+  console.log('values: ', multiValue);
 
   return (
     <div>
       <h4>单选：</h4>
       <TabsSelect
         style={{ width: 400 }}
-        value={value}
-        options={selectOptions}
-        onChange={setValue}
+        value={singleValue}
+        options={options}
+        onChange={setSingleValue}
       />
 
       <h4>多选：</h4>
       <TabsSelect
         style={{ width: 400 }}
         mode="multiple"
-        value={values}
-        options={selectOptions}
-        onChange={setValues}
+        value={multiValue}
+        options={options}
+        onChange={setMultiValue}
       />
     </div>
   );
