@@ -5,3 +5,6 @@ node_modules
 .dumi/tmp-test
 .dumi/tmp-production
 .DS_Store
+
+# 包锁文件
+pnpm-lock.yaml
