@@ -71,7 +71,7 @@ export const TabsSelect = <
   return (
     <Select
       loading={loading}
-      dropdownRender={(menu) => {
+      popupRender={(menu) => {
         const tabContent = <Spin spinning={loading}>{menu}</Spin>;
         return tabOptions ? (
           <Tabs

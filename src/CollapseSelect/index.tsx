@@ -91,7 +91,7 @@ export const CollapseSelect = <
   return (
     <Select
       loading={loading}
-      dropdownRender={(menu) => (
+      popupRender={(menu) => (
         <Spin spinning={loading}>
           <Collapse
             className={classNames(
