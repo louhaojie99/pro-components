@@ -61,7 +61,7 @@ export const TabsSelect = <
     }));
   };
 
-  const handleSelectChang: SelectProps['onChange'] = (_, option) => {
+  const handleSelectChange: SelectProps['onChange'] = (_, option) => {
     setState((prev) => ({
       ...prev,
       selectValue: option as OptionType,
@@ -96,7 +96,7 @@ export const TabsSelect = <
       defaultActiveFirstOption={false}
       value={selectValue}
       options={selectOptions}
-      onChange={handleSelectChang}
+      onChange={handleSelectChange}
       {...omit(restProps, ['value', 'onChange'])}
     />
   );

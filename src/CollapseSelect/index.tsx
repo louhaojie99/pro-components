@@ -74,14 +74,13 @@ export const CollapseSelect = <
   );
 
   const handleCollapseChange: CollapseProps['onChange'] = (keys) => {
-    console.log('keys: ', keys);
     setState((prev) => ({
       ...prev,
       activeKey: keys[0],
     }));
   };
 
-  const handleSelectChang: SelectProps['onChange'] = (_, option) => {
+  const handleSelectChange: SelectProps['onChange'] = (_, option) => {
     setState((prev) => ({
       ...prev,
       selectValue: option as OptionType,
@@ -118,7 +117,7 @@ export const CollapseSelect = <
       labelInValue
       defaultActiveFirstOption={false}
       value={selectValue}
-      onChange={handleSelectChang}
+      onChange={handleSelectChange}
       options={selectOptions}
       {...omit(restProps, ['value', 'onChange'])}
     />
