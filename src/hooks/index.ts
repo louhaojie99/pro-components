@@ -13,7 +13,7 @@ export { useUpdateEffect } from './useUpdateEffect';
 
 export { useTitle, type Options } from './useTitle';
 
-export { useBoolean } from './uesBoolean';
+export { useBoolean } from './useBoolean';
 
 export { useControllableValue } from './useControllableValue';
 export type { StandardProps } from './useControllableValue';

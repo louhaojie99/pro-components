@@ -38,9 +38,11 @@ const ContextTempProvider: React.FC<{
 export const withContextTempProvider =
   <T extends Record<string, any>>(Component: React.ComponentType<T>) =>
   (props: T) => {
-    <ContextTempProvider>
-      <Component {...props} />
-    </ContextTempProvider>;
+    return (
+      <ContextTempProvider>
+        <Component {...props} />
+      </ContextTempProvider>
+    );
   };
 
 export const useContextTemp = () => {
