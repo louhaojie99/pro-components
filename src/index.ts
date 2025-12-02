@@ -26,6 +26,9 @@ export type { ErrorBoundaryProps, ErrorBoundaryState } from './ErrorBoundary';
 export { SearchForm } from './SearchForm';
 export type { SearchFormItem, SearchFormProps } from './SearchForm';
 
+export { FullContainer } from './FullContainer';
+export type { FullContainerProps } from './FullContainer';
+
 // Utils
 export * as Utils from './utils';
 
