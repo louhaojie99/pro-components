@@ -3,62 +3,42 @@
 [![NPM version](https://img.shields.io/npm/v/@louhaojie99/pro-components.svg?style=flat)](https://npmjs.org/package/@louhaojie99/pro-components)
 [![NPM downloads](http://img.shields.io/npm/dm/@louhaojie99/pro-components.svg?style=flat)](https://npmjs.org/package/@louhaojie99/pro-components)
 
-基于 Ant Design 打造的高级组件库。
+基于 Ant Design 的业务增强组件库，涵盖常用高阶组件、Hook、工具方法。更多示例与指南可查看[在线文档](https://louhaojie99.github.io/pro-components)。
 
-## 安装使用
-
-准备了一份详细的[教程文档](https://louhaojie99.github.io/pro-components)
+## 安装
 
 ```bash
-$ pnpm install -S @louhaojie99/pro-components
+pnpm add @louhaojie99/pro-components
 ```
 
-## 启动项目
+## 本地开发
 
 ```bash
-$ pnpm install
-
-$ pnpm dev
+pnpm install
+pnpm dev          # 启动文档站与示例调试
 ```
 
-## 更新文档
-
-编译生成 dist 目录
+## 文档构建与发布
 
 ```bash
-$ pnpm run docs:build
-
-$ pnpm run deploy
+pnpm run docs:build   # 生成静态文档到 dist
+pnpm run deploy       # 将文档发布到 GitHub Pages
 ```
 
-## 更新 npm 包
+## 组件包构建与发布
 
 ```bash
-$ pnpm run build
-
-$ npm login
-
-$ npm publish
-
+pnpm run build   # 打包组件库到 dist
+npm login
+npm publish
 ```
 
-## 其他
+## 常用脚本
 
 ```bash
-# build library source code
-$ pnpm run build
-
-# build library source code in watch mode
-$ pnpm run build:watch
-
-# build docs
-$ pnpm run docs:build
-
-# Locally preview the production build.
-$ pnpm run docs:preview
-
-# check your project for potential problems
-$ pnpm run doctor
+pnpm run build:watch   # 监听模式打包
+pnpm run docs:preview  # 预览构建后的文档
+pnpm run doctor        # 健康检查
 ```
 
 ## LICENSE
