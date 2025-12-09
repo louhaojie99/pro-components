@@ -9,7 +9,7 @@ import {
 } from '@ant-design/icons';
 import type { FormItemProps, FormProps } from 'antd';
 import { Button, Col, Form, Row, Space } from 'antd';
-import React, { useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 
 export interface SearchFormItem extends FormItemProps {
   /** 用于栅格布局, 占用的列数（如果不指定默认 8） */
@@ -47,15 +47,15 @@ export const SearchForm: React.FC<SearchFormProps> = (props) => {
     Boolean(showCollapse && items.length > defaultVisibleItemCount),
   );
 
-  const handleSearch = async () => {
+  const handleSearch = useCallback(async () => {
     const values = await searchForm.validateFields();
     onSearch?.(values);
-  };
+  }, [searchForm, onSearch]);
 
-  const handleReset = () => {
+  const handleReset = useCallback(() => {
     searchForm.resetFields();
     onReset?.();
-  };
+  }, [searchForm, onReset]);
 
   // 显示的表单项
   const displayedItems = useMemo(
@@ -97,7 +97,7 @@ export const SearchForm: React.FC<SearchFormProps> = (props) => {
         )}
       </Space>
     ),
-    [searchForm, onSearch, onReset, collapsed, searchLoading],
+    [handleSearch, handleReset, collapsed, searchLoading, showCollapse],
   );
 
   return (

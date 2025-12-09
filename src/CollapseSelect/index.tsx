@@ -54,11 +54,17 @@ export const CollapseSelect = <
     ? collapseOptions?.[0]?.panelKey
     : undefined;
 
+  const computedDefaultValue = useMemo(
+    () =>
+      propsDefaultValue || {
+        activeKey: defaultActiveKey,
+        selectValue: undefined,
+      },
+    [propsDefaultValue, defaultActiveKey],
+  );
+
   const [state, setState] = useControllableValue<SelectValue>(props, {
-    defaultValue: propsDefaultValue || {
-      activeKey: defaultActiveKey,
-      selectValue: undefined,
-    },
+    defaultValue: computedDefaultValue,
   });
 
   const { activeKey = defaultActiveKey, selectValue } = state ?? {};
